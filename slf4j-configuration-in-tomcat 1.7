@@ -1,0 +1,35 @@
+1. Download the latest slf4j zip of jar files from http://sourceforge.net/projects/tc-slf4jlogback/files/
+
+2. Unzip it and copy and paste jar files from extracted folder to Tomcat ( bin and config folders).
+
+3. bin/tomcat-juli.jar to $CATALINA_HOME/bin (replacing existing tomcat-juli.jar)
+
+4. bin/setenv.sh or bin\setenv.bat to $CATALINA_HOME/bin
+	In windows: Open the setenv.bat then add
+	
+	set LOGGING_MANAGER=-Dnop
+	set JAVA_OPTS=%JAVA_OPTS% -Djuli-logback.configurationFile=file:%CATALINA_HOME%\conf\logback.xml
+	CLASSPATH=%CATALINA_HOME%\lib\jul-to-slf4j-1.7.2.jar;
+	%CATALINA_HOME%\lib\slf4j-api-1.7.9.jar;^
+	%CATALINA_HOME%\lib\logback-classic-1.0.7.jar;^
+	%CATALINA_HOME%\lib\logback-core-1.0.7.jar
+	
+	In Ubuntu: Open the setenv.sh add
+	set LOGGING_MANAGER=-Dnop
+	set JAVA_OPTS=$JAVA_OPTS -Djuli-logback.configurationFile=file:$CATALINA_HOME\conf\logback.xml
+	CLASSPATH=$CATALINA_HOME\lib\jul-to-slf4j-1.7.2.jar:\
+	$CATALINA_HOME\lib\slf4j-api-1.7.9.jar:\
+	$CATALINA_HOME\lib\logback-classic-1.0.7.jar:\
+	$CATALINA_HOME\lib\logback-core-1.0.7.jar
+	
+5. copy logback.xml file from our project mohWeb/***/resources to $CATALINA_HOME/conf
+
+6. conf/server.xml to $CATALINA_HOME/conf (this file contains proper valve and doesn't require any changes, unless you have your own version of server.xml)
+
+7. Copy (from e.g. Maven Central or logback site):
+    logback-core-1.1.2.jar to $CATALINA_HOME/lib
+    logback-access-1.1.2.jar to $CATALINA_HOME/lib
+    slf4j-api-1.7.9.jar to $CATALINA_HOME/lib
+    jul-to-slf4j-1.7.2.jar to $CATALINA_HOME/lib
+
+8. Delete $CATALINA_HOME/conf/logging.properties. This will turn off java.util.logging completely.

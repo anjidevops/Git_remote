@@ -1,0 +1,17 @@
+<div ng-if="loggedUser.userRole == 'Admin' || loggedUser.userRole == 'Doctor'">
+	<div class="quick-links" ng-click="openAddEditMed()">
+		Medicine List
+	</div>
+	<div class="quick-links" ng-click="notificationToPatient()">
+		Send notification
+	</div>
+	<div class="quick-links" ng-click="appSettingById()">
+		Settings
+	</div>
+	<div class="quick-links" ng-click="searchAppointment()">
+		Appointments
+	</div>
+</div>
+<a href="" title="Click Here for free medical checkup"><img class="img-responsive img-thumbnail push-logo-down" ng-src="img/1.jpg" alt="free medical checkup"></a>
+<a href="" title="Child Care"><img class="img-responsive img-thumbnail push-logo-down" ng-src="img/3.jpg" alt="child care"></a>
+<a href="" title="Old Age Care"><img class="img-responsive img-thumbnail push-logo-down" ng-src="img/2.jpg" alt="old-age-care"></a>

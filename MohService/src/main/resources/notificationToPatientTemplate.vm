@@ -1,0 +1,22 @@
+<html>
+<body>
+
+Hi <h3 style="display:inline">$key.User.firstName</h3>
+<h3> Your appointment Notification</h3>
+<table>
+<tr colspan="3"></tr>
+<tr>
+        <td> patient name</td>
+        <td>Date of Appointment</td>
+        <td>Visit the Doctor</td>
+</tr>
+<tr>
+        <td>$key.User.firstName</td>
+        <td> $key.appointmentDate</td>
+        <td>$key.Doctor.doctorSpec</td>
+</tr>
+</table>
+
+<img src="p.jpg" alt="Image Path Not found"/>
+</body>
+</html>

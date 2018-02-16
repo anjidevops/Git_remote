@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib>
+	<description>Moh Security Custom Tag</description>
+	<tlib-version>2.1</tlib-version>
+	<jsp-version>2.0</jsp-version>
+	<short-name>mohsec</short-name>
+	<uri>http://neev.com/jsp/tlds/securitytags</uri>
+	<tag>
+		<name>roles</name>
+		<tag-class>com.neev.moh.web.jsp.MohRoles</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+	<tag>
+		<name>privs</name>
+		<tag-class>com.neev.moh.web.jsp.MohPrivs</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>group</name>
+			<required>false</required>
+		</attribute>
+	</tag>
+</taglib>

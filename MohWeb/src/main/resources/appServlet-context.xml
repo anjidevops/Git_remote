@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+	<context:annotation-config />
+	<context:component-scan base-package="com.neev.moh" />
+
+	<!-- Enabling AspectJ AOP -->
+	<aop:aspectj-autoproxy />
+	<beans:bean id="loggerAspect" class="com.neev.moh.web.logConf.LoggerAspect" />
+
+	<!-- resource for angular app -->
+	<mvc:resources mapping="/css/**" location="/resources/angular/app/staticContents/css/" />
+	<mvc:resources mapping="/img/**" location="/resources/angular/app/staticContents/img/" />
+	<mvc:resources mapping="/fonts/**" location="/resources/angular/app/staticContents/fonts/" />
+
+	<mvc:resources mapping="/js/**" location="/resources/angular/" />
+	<mvc:resources mapping="**/*.html" location="/resources/angular/app/views/" />
+
+	<mvc:resources mapping="/att/**" location="file:/data/tomcat/" />
+
+	<!-- Configure bean to convert JSON to POJO and vice versa -->
+	<beans:bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+	</beans:bean>
+
+	<!-- Configure to plugin JSON as request and response in method handler -->
+	<beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<beans:property name="messageConverters">
+			<beans:list>
+				<beans:ref bean="jsonMessageConverter" />
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="200971520" /> <!-- 200MB -->
+	</beans:bean>
+
+	<!-- <beans:bean id="inventoryControllerScheduled" class="com.neev.moh.web.controller.InventoryController"></beans:bean> -->
+</beans:beans>

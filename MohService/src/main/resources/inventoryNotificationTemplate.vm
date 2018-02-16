@@ -1,0 +1,22 @@
+<html>
+<body>
+
+<table>
+<tr colspan="3"><h3>Medicine report</h3></tr>
+
+<tr>
+        <td> Medicine Name</td>
+		 <td>Thresold Quantity</td>
+		  <td>Available Quantity</td>
+</tr>
+ 	 #foreach( $medicineInventory in $user.setListObject)
+<tr>
+	     <td>$medicineInventory.medicineName</td>
+	     <td>$medicineInventory.thresoldQuantity</td>
+	     <td>$medicineInventory.availableQuantity</td>
+</tr>
+     #end
+
+</table>
+</body>
+</html>

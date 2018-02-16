@@ -1,0 +1,202 @@
+.login-box {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    float: none;
+    padding: 20px;
+    margin-top: 50px;
+}
+.push-down {
+	margin-top: 10px;
+}
+.push-down-more {
+	margin-top: 20px;	
+}
+.header {
+	margin-top: 20px;
+}
+.header .form-control {
+	height: 30px;
+}	
+.header .btn {
+	padding: 0 12px;
+	height: 30px;
+}
+.header .search-block {
+	margin-top: 3px;
+}
+.dashboard {
+	margin-top: 50px;
+}
+.dashboard .panel {
+    float: left;
+    margin-bottom: 40px;
+    margin-right: 1%;
+    width: 24.25%;
+    text-align: center;
+    text-transform: uppercase;
+}
+.panel.panel-primary .panel-body a{color: #d9230f;}
+.panel.panel-success .panel-body a{color: #469408;}
+.panel.panel-danger .panel-body a{color: #d9831f;}
+.panel.panel-info .panel-body a{color: #029acf;}
+.dashboard .panel:last-child {
+    margin-right: 0;
+    float: right;
+}
+.dashboard .panel-heading h3{
+	font-size: 18px;
+}
+.dashboard .panel-body, .dashboard .panel-body a{
+	color: #555;
+}
+.dashboard-heading {
+	border-bottom: 1px solid #888;
+    margin-bottom: 30px;
+    padding-bottom: 7px;
+}
+th, tr {
+	text-align: center
+}
+.appoinments a {
+	color: #777;
+}
+.patient-name {
+	font-size: 16px;
+	margin-top: 25px;
+	font-weight: 900;
+}
+.miscellaneous-icons {
+	margin-top: 25px;
+	padding-left: 0;
+}
+.miscellaneous-icons li {
+    display: inline-block;
+    margin-right: 10px;
+}
+.miscellaneous-icons li a{
+    color: #777;
+}
+.miscellaneous-icons li span{
+    font-size: 18px;
+}
+.setting-icon .dropdown-menu{
+	left: -144px;
+	font-size: 14px;
+}
+.setting-icon .glyphicon {
+	color: #821509;
+    font-size: 16px;
+}
+.quick-links {
+    border-bottom: 1px solid #aaa;
+    border-right: 1px solid #aaa;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 5px 0 5px 10px;
+    text-transform: uppercase;
+}
+.quick-links:hover {
+	color: #821509;
+}
+.border-bottom {
+	border-bottom: 1px solid #821509;
+}
+.search-block {
+	margin: 3% auto 0;
+    width: 70%;
+}
+.search-results {
+    margin-top: 5%;
+}
+.push-logo-down {
+	margin-top: 10px;
+}
+footer {
+	border-top: 1px solid #821509;
+    margin: 4em 0;
+    padding-top: 1em;
+}
+a {
+	color: #821509;
+}
+.navbar-inverse {
+	background-color : #821509;
+}
+.btn-default.search-button {
+	background-color: #821509;
+	background-image: none;
+}
+.form-control:focus {
+	border-color: #821509;
+	box-shadow:0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #F7D3CF;
+}
+.add-edit-medicine {
+    margin-top: 40px;
+}
+.add-edit-medicine input {
+    height: 35px;
+    width: 70%;
+}
+.add-edit-medicine textarea {
+    width: 70%;
+    resize:none;
+}
+.add-edit-medicine select {
+    width: 70%;
+    height: 35px;
+}
+.add-edit-medicine  input[type="radio"], .add-edit-medicine  input[type="checkbox"] {
+    height:auto;
+    width: auto;
+}
+.logged-user {
+	text-transform: capitalize;
+}
+.single-slot {
+    border: 1px solid #aaa;
+    float: left;
+    height: 35px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    width: 20px;
+}
+.legend .single-slot {
+	float: none;
+	margin: 0 auto;
+}
+.legend .table {
+	margin: 0 auto 5%;
+    width: 70%;
+}
+.single-slot.free {
+	background-color: #fff;
+}
+.single-slot.free:hover {
+	background-color: blue;
+}
+.single-slot.busy {
+	background-color: red;
+}
+.single-slot.unavailable {
+	background-color: grey;
+}
+.single-slot.surgery {
+	background-color: green;
+}
+.single-slot.selected {
+	background-color: blue;
+}
+.single-slot.ipd {
+	background-color: orange;
+}
+.single-slot.opd {
+	background-color: yellow;
+}
+.date-picker {
+    margin-left: 15%;
+    width: 70%;
+}
+.date-picker .search-button {
+	height: 35px;
+}

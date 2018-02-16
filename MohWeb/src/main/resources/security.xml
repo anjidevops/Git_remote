@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sec="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	    http://www.springframework.org/schema/security	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	
+    <sec:http auto-config="false" use-expressions="true" entry-point-ref="authenticationEntryPoint" authentication-manager-ref="authenticationManager">
+		<sec:intercept-url pattern="/" access="permitAll" />
+		<sec:intercept-url pattern="/login.jsp" access="permitAll" />
+		<sec:intercept-url pattern="/denied.jsp" access="permitAll" />
+		<sec:intercept-url pattern="/webservice.jsp" access="permitAll" />
+		<sec:intercept-url pattern="/rest/*" access="permitAll" />
+        <sec:form-login authentication-failure-handler-ref="customFailureHandler"
+						authentication-success-handler-ref="loginSucessHandler"
+                        password-parameter="password"
+                        username-parameter="loginId"
+                        login-processing-url="/login"
+                        default-target-url="/"/>
+		<sec:intercept-url pattern="/**" access="hasRole('access_resources')" />
+    </sec:http>
+
+    <bean id="authenticationEntryPoint" class="com.neev.moh.web.auth.AuthenticationEntryPoint"/>
+    <bean id="loginSucessHandler" class="com.neev.moh.web.auth.AuthenticationSuccessHandler"/>
+    <bean id="customFailureHandler" class="com.neev.moh.web.auth.CustomAuthenticationFailureHandler"/>
+    <bean id="customUserDetailsService" class="com.neev.moh.web.auth.CustomUserDetailsService"/>
+
+    <sec:authentication-manager id="authenticationManager">
+        <sec:authentication-provider user-service-ref="customUserDetailsService"/>
+    </sec:authentication-manager>
+
+    <sec:global-method-security pre-post-annotations="enabled" />
+
+</beans>

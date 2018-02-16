@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xmlns:cache="http://www.springframework.org/schema/cache"
+             xmlns:p='http://www.springframework.org/schema/p'
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+    <context:annotation-config/>
+    <context:component-scan base-package="com.neev.moh.facade.test"/>
+    <beans:import resource="classpath:service-context.xml"/>
+
+    <beans:bean id="webserviceFacade" class="com.neev.moh.facade.impl.MohWebserviceFacadeImpl"/>
+    <beans:bean id="userFacade" class="com.neev.moh.facade.impl.UserFacadeImpl"/>
+    <beans:bean id="departmentFacade" class="com.neev.moh.facade.impl.DepartmentFacadeImpl"/>
+    <beans:bean id="appointmentFacade" class="com.neev.moh.facade.impl.AppointmentFacadeImpl"/>
+    <beans:bean id="inventoryFacade" class="com.neev.moh.facade.impl.InventoryFacadeImpl"/>
+    <beans:bean id="aptFacade" class="com.neev.moh.facade.impl.AptFacadeImpl"/>
+    <beans:bean id="aptHelper" class="com.neev.moh.facade.impl.AptHelper"/>
+
+    <beans:bean id="appointmentPopulator" class="com.neev.moh.facade.convert.populator.AppointmentPopulator"/>
+    <beans:bean id="patientRecordPopulator" class="com.neev.moh.facade.convert.populator.PatientRecordPopulator"/>
+    <beans:bean id="appointmentSearchResultPopulator"
+                class="com.neev.moh.facade.convert.populator.AppointmentSearchResultPopulator"/>
+    <beans:bean id="userInfoPopulator" class="com.neev.moh.facade.convert.populator.UserInfoPopulator"/>
+
+
+    <!-- Enabling Spring cache -->
+    <cache:annotation-driven/>
+    <beans:bean id="facadeCacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager"
+                p:cacheManager-ref="facadeEhcache"/>
+    <beans:bean id="facadeEhcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
+                p:configLocation="classpath:ehcache-facade.xml" p:shared="true"/>
+
+</beans:beans>

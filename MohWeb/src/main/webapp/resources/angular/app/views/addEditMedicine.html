@@ -1,0 +1,68 @@
+﻿
+		<h3>Add/Edit Medicine</h3>
+
+		<div class="add-edit-medicine">	
+			
+			<form name="medForm" novalidate class="form-horizontal">
+				<span style="color:blue;">{{medSuccessMessage}}</span>
+				<span style="color:red;">{{medErrorMessage}}</span>
+				<div class="form-group">
+				    <label for="inputEmail3" class="col-sm-5 control-label">Medicine Name* :</label>
+				    <div class="col-sm-6">
+				        <input type="text" name="MedicineName" ng-model="Med.medicineName" required/> 
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="inputEmail3" class="col-sm-5 control-label">Threshold Quantity :</label>
+				    <div class="col-sm-6">
+				        <input type="number" name="thresholdQuantity" ng-model="Med.thresoldQuantity" /> 
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="inputEmail3" class="col-sm-5 control-label">Available Quantity :</label>
+				    <div class="col-sm-6">
+				        <input type="number" name="availableQuantity" ng-model="Med.availableQuantity" />
+				        <span>{{loginMessage}}</span>
+				    </div>
+				</div>
+				<div class="form-group">
+				    <div class="col-sm-offset-1 col-sm-10">
+				        <button ng-click="addEditMed(Med)" ng-disabled="medForm.$invalid || isUnchanged(med)" class="btn btn-default search-button">{{medMode}}</button> 
+		  				<button ng-click="clearData(Med)" class="btn btn-default search-button">Clear</button>
+		  				<button ng-click="cancelAddMed()" class="btn btn-default search-button">Cancel</button> 
+				    </div>
+				</div>
+		  		<!-- <table align="center" width="480px" class="css-form">
+		  			<tr style="height:45px">
+		  				<td>Medicine Name* :</td>
+		  				<td><input type="text" name="MedicineName" ng-model="Med.medicineName" required/> </td>
+		  				<tr>
+		  			</tr>
+		  			<tr style="height:45px">
+		  				<td>Threshold Quantity:</td>
+		  				<td><input type="number" name="thresholdQuantity" ng-model="Med.thresoldQuantity" />
+		  			</tr>
+		  			<tr style="height:45px">
+		  				<td>Available Quantity:</td>
+		  				<td><input type="number" name="availableQuantity" ng-model="Med.availableQuantity" />
+		  					<span>{{loginMessage}}</span>
+		  				</td>
+		  				
+		  			</tr>
+		  				
+		  			<tr style="height:75px">
+		  				
+		  				<td colspan="2"  align="right" >
+		  					<button ng-click="addEditMed(Med)" 
+		  						ng-disabled="medForm.$invalid || isUnchanged(med)" 
+		  					style="width: 110px ; height:32px">{{medMode}}</button> 
+		  					<button ng-click="clearData(Med)" style="width: 110px ; height:32px">Clear</button>
+		  					<button ng-click="cancelAddMed()" style="width: 110px ; height:32px">Cancel</button> 
+		  				</td>
+		  			</tr>
+		  		</table> -->
+			</form>
+
+		</div>
+
+	

@@ -1,0 +1,90 @@
+
+		<div>
+			<form name="patientRecordForm" class="form-horizontal" novalidate>
+				<h3>Patient Record</h3>
+				<div class="add-edit-medicine">	
+					<span>{{createPatientRecordResult}}</span>
+					<form name="PatientRecord" novalidate>
+						<div class="form-group">
+						    <label class="col-sm-5 control-label">Summary :</label>
+						    <div class="col-sm-6">
+						        <input type="text" ng-model="PatientRecord.summary" required/>
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label class="col-sm-5 control-label">Prescription :</label>
+						    <div class="col-sm-6">
+						        <textarea ng-model="PatientRecord.prescription" required rows="4" cols="50"></textarea>
+						    </div>
+						</div>
+						 
+						<div class="form-group" ng-show="updatePatientRecord">
+							<label class="col-sm-5 control-label">Uploaded Reports:</label>
+							<div class="col-sm-6 view-downloadreport-anchor-pr">
+						     	<p ng-show="bothAttachmentDownloadLink">
+						     		<a href="{{PatientRecord.attach1Path}}">First Report</a>
+						     		<a href="{{PatientRecord.attach2Path}}">Second Report</a>
+						     	</p>
+						     	<a ng-show="firstAttachmentDownloadLink"  href="{{PatientRecord.attach1Path}}">First Report</a>
+						     	<a ng-show="secondAttachmentDownloadLink" href="{{PatientRecord.attach2Path}}">Second Report</a>
+						     	<a ng-show="noneAttachmentLinks">None</a>
+					    	 </div>
+		    			</div>
+						
+						<div class="form-group">
+						    <label class="col-sm-5 control-label">Attachment :</label>
+						    <div class="col-sm-6">
+						        <input type="file" name="ufile" onchange="angular.element(this).scope().filesChanged(this)" class="col-sm-offset-2" required/>
+						    </div>
+						</div>
+						<div class="form-group">
+						    <div class="col-sm-offset-1 col-sm-10">
+						        <button class="btn btn-default search-button" type="submit" ng-click="createPatientRecord(PatientRecord)" ng-disabled="patientRecordForm.$invalid || isUnchanged(PatientRecord)" >
+					   		Submit </button> 
+						    </div>
+						</div>
+					</form>	
+				</div>
+				<!-- <table> 
+					<tr><td colspan="2"><h1>Patient Record</h1></td></tr>
+					 
+					 <tr>
+					 	<td colspan="2">
+					 		<h3>
+					 			<b>{{createPatientRecordResult}}</b>
+					 		</h3>
+					 	</td>
+					 </tr>
+
+					 <tr>
+					 	<td>Summary</td>
+					 	<td><input type="text" ng-model="PatientRecord.summary" required/></td>
+					 </tr>
+					 <tr>
+					 	<td>Prescription</td>
+					 	<td><textarea ng-model="PatientRecord.prescription" required rows="4" cols="50"></textarea></td>
+					 </tr>
+					 <tr>	 	
+						<td>Attachment: </td>
+						<td>
+							<input type="file" name="ufile"
+							onchange="angular.element(this).scope().filesChanged(this)" required/>
+						</td>
+					</tr>	 
+
+					<tr>
+					   <td>   
+					    	<button type="submit" ng-click="createPatientRecord(PatientRecord)" ng-disabled="patientRecordForm.$invalid || isUnchanged(PatientRecord)" >
+					   		Create Patient Record </button> 
+					   	</td>
+					</tr>  
+				</table> -->
+		    </form>
+		</div>		
+
+
+
+
+
+
+

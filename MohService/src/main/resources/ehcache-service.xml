@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+
+	<defaultCache eternal="true" maxElementsInMemory="9999000" overflowToDisk="true" />
+
+	<cache name="addressCache"           eternal="false" maxElementsInMemory="100000" overflowToDisk="true" diskPersistent="false" timeToIdleSeconds="0" timeToLiveSeconds="300000" memoryStoreEvictionPolicy="LRU" />
+	<cache name="appointmentCache"       eternal="false" maxElementsInMemory="300000" overflowToDisk="true" diskPersistent="false" timeToIdleSeconds="0" timeToLiveSeconds="300000" memoryStoreEvictionPolicy="LRU" />
+	<cache name="departmentCache"        eternal="false" maxElementsInMemory="100000" overflowToDisk="true" diskPersistent="false" timeToIdleSeconds="0" timeToLiveSeconds="300000" memoryStoreEvictionPolicy="LRU" />
+	<cache name="doctorCache"            eternal="false" maxElementsInMemory="10000"  overflowToDisk="true" diskPersistent="false" timeToIdleSeconds="0" timeToLiveSeconds="300000" memoryStoreEvictionPolicy="LRU" />
+	<cache name="genderCache"            eternal="false" maxElementsInMemory="100"    overflowToDisk="true" diskPersistent="false" timeToIdleSeconds="0" timeToLiveSeconds="300000" memoryStoreEvictionPolicy="LRU" />
+	<cache name="medicineInventoryCache" eternal="false" maxElementsInMemory="100000" overflowToDisk="true" diskPersistent="false" timeToIdleSeconds="0" timeToLiveSeconds="300000" memoryStoreEvictionPolicy="LRU" />
+	<cache name="patientCache"           eternal="false" maxElementsInMemory="50000"  overflowToDisk="true" diskPersistent="false" timeToIdleSeconds="0" timeToLiveSeconds="300000" memoryStoreEvictionPolicy="LRU" />
+	<cache name="userCache"              eternal="false" maxElementsInMemory="50000"  overflowToDisk="true" diskPersistent="false" timeToIdleSeconds="0" timeToLiveSeconds="300000" memoryStoreEvictionPolicy="LRU" />
+	<cache name="slotCache"              eternal="false" maxElementsInMemory="5000"  overflowToDisk="true" diskPersistent="false" timeToIdleSeconds="0" memoryStoreEvictionPolicy="LRU" />
+
+</ehcache>

@@ -1,0 +1,27 @@
+﻿<h3 style="color:#003d5b"><u>Doctor-Appointment Counts in last 30 days From date:</u></h3>
+
+<!-- {{welcomeMessage}} -->
+<!--{{loginUrl}} -->
+
+<div ng-controller="ReportController">	
+	
+	<form name="medForm" novalidate>
+	
+		<span style="color:blue;">{{medSuccessMessage}}</span>
+		<span style="color:red;">{{medErrorMessage}}</span>
+		
+		<table align="center" width="480px" border="1">
+		    <tr>
+		        <th >Doctor Name</th>
+		        <th >Count</th>
+		    </tr>
+		    <tr ng-repeat="rl in reportList " >
+		        <td>{{rl.doctorName}}</td>
+		        <td>{{rl.count}}</td>
+		    </tr>
+		</table>
+  		
+	</form>
+
+</div>
+

@@ -1,0 +1,45 @@
+
+<div>
+	<h3> 
+		Search Appointment 
+	</h3>  
+	<div>
+		<div class="input-group col-md-8 search-block">
+			<input type="text" class="form-control" name="userid" ng-model="userText" placeholder="Enter User Email/Mobile to search" required/>
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-default search-button" ng-click="searchAppointment(userText)"><span aria-hidden="true" class="glyphicon glyphicon-search"></span></button>
+			</span>
+		</div>  
+	</div>
+
+
+	
+
+	<div ng-show="showResult">
+		<table class="table table-bordered push-logo-down" ng-show="showAppointmentResult">
+			<thead>
+				<th>Name</th>
+				<th>Date</th>
+				<th>Id</th>
+				<th></th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="app in appointments">
+					<td>{{app.userName}}</td>
+					<td>{{app.appointmentDate}}</td>
+					<td>{{app.appointmentId}}</td>
+					<td><a href="javascript:void(0);" ng-click="makeAppointment(app)">Create/Update Patient Record</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<div ng-hide="showAppointmentResult">
+			<p>No Appointment are placed with given email/mobile</p>	
+		</div>	
+	</div>
+</div>
+
+
+
+
+
+

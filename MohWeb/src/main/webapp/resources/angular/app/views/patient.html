@@ -1,0 +1,20 @@
+﻿<table class="table table-bordered push-logo-down">
+    <thead>
+        <tr>
+            <th>Appoint Id</th>
+            <th>Visited Date</th>
+            <th>Doctor Name</th>
+            <th>Summary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="appointment in appointmentHistory">
+            <td>
+                <a href="#/prescriptionDetails/{{appointment.appointmentId}}">{{appointment.appointmentId}}</a>
+            </td>
+            <td>{{appointment.visitedDate}}</td>
+            <td>{{appointment.doctorName}}</td>
+            <td>{{appointment.summary}}</td>
+        </tr>
+    </tbody>
+</table>

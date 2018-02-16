@@ -1,0 +1,25 @@
+﻿<div class="prescription-container">
+	<div class="prescription-heading">
+         <div class="prescription-col">Date of visit</div>
+		 <div class="prescription-col">Doctor visited</div>
+		 <div class="prescription-col">Summary</div>
+		 <div class="prescription-col">Detailed Prescription</div>
+		 <div class="prescription-col">Download Reports</div>
+ 	</div>
+	<div class="prescription-table-row" ng-show="showRecord">
+		     <div class="prescription-col">{{patientRecord.dateOfVisit}}</div>
+		     <div class="prescription-col">{{patientRecord.doctorName}}</div>
+		     <div class="prescription-col">{{patientRecord.summary}}</div>
+		     <div class="prescription-col">{{patientRecord.prescription}}</div>
+		     <div class="prescription-col">
+		     	<p ng-show="bothAttachmentDownloadLink">
+		     		<a class="view-downloadreport-anchor" href="{{patientRecord.attach1Path}}">1</a>
+		     		<a class="view-downloadreport-anchor" href="{{patientRecord.attach2Path}}">2</a>
+		     	</p>
+		     	<a ng-show="firstAttachmentDownloadLink" class="view-downloadreport-anchor"  href="{{patientRecord.attach1Path}}">1</a>
+		     	<a ng-show="secondAttachmentDownloadLink" class="view-downloadreport-anchor" href="{{patientRecord.attach2Path}}">2</a>
+		     	<a ng-show="nondeAttachmentLinks" class="view-downloadreport-anchor">none</a>
+		     </div>
+    </div>
+    <div class="prescription-table-row" ng-hide="showRecord">No Patient Record found.</div>
+  </div>

@@ -1,0 +1,255 @@
+<div class="add-edit-medicine">
+	<h3>Registration Form</h3>
+	<form name="registrationForm" novalidate class="form-horizontal">
+		<p>{{registrationResultMessage}}</p>
+		<p>Note: Please make sure the details are correct before submitting form. Fields marked with * are mandatory.</p>
+		<div class="form-group">
+			<label class="col-sm-5 control-label">Register as* :</label>
+			<div class="col-sm-6">
+				<select name="roleType" ng-model="User.roleType" required> 
+					<option value="">--Select--</option>
+					<option value="Doctor">Doctor</option>
+					<option value="Patient">Patient</option>
+					<option value="Staff">Staff</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-5 control-label">First Name* :</label>
+			<div class="col-sm-6">
+				<input type="text" name="firstName" ng-model="User.firstName" required/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-5 control-label">Last Name* :</label>
+			<div class="col-sm-6">
+				<input type="text" name="lastName" ng-model="User.lastName" required/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-5 control-label">Mobile Country Code* :</label>
+			<div class="col-sm-6">
+				<input type="text" name="mobileCode" ng-model="User.mobileCode" required/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-5 control-label">Mobile* :</label>
+			<div class="col-sm-6">
+				<input type="text" name="mobile" ng-model="User.mobile" required/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-5 control-label">Email* : </label>
+			<div class="col-sm-6">
+				<input type="email" name="email" ng-model="User.email" required/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-5 control-label">Password*	:</label>
+			<div class="col-sm-6">
+				<input type="password" name="confirmPassword" ng-model="User.User.password" required/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-5 control-label">Confirm Password* :</label>
+			<div class="col-sm-6">
+				<input type="password" name="confirmPassword" ng-model="User.confirmPassword" required/>
+			</div>
+		</div>
+		<h4><u>Home Address</u></h4>
+		<div class="form-group">
+			<label class="col-sm-5 control-label">Street 1* :</label>
+			<div class="col-sm-6">
+				<input type="text"  name="address1Street1" ng-model="User.address1Street1" required/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-5 control-label">Street 2* :</label>
+			<div class="col-sm-6">
+				<input type="text"  name="address1Street2" ng-model="User.address1Street2" required/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-5 control-label">City :</label>
+			<div class="col-sm-6">
+				<input type="text" name="address1City" ng-model="User.address1City" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-5 control-label">Country :</label>
+			<div class="col-sm-6">
+				<input type="text" name="address1Country" ng-model="User.address1Country"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-5 control-label">Postal Code : </label>
+			<div class="col-sm-6">
+				<input type="text" name="address1Pincode" ng-model="User.address1Pincode"/>
+			</div>
+		</div>
+		<h4><u>Office Address</u></h4>
+		<div class="form-group">
+			<label class="col-sm-5 control-label">Street 1* :</label>
+			<div class="col-sm-6">
+				<input type="text"  name="address2Street1" ng-model="User.address2Street1" required/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-5 control-label">Street 2* :</label>
+			<div class="col-sm-6">
+				<input type="text"  name="address2Street2" ng-model="User.address2Street2" required/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-5 control-label">City :</label>
+			<div class="col-sm-6">
+				<input type="text" name="address2City" ng-model="User.address2City" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-5 control-label">Country :</label>
+			<div class="col-sm-6">
+				<input type="text" name="address2Country" ng-model="User.address2Country"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-5 control-label">Postal Code : </label>
+			<div class="col-sm-6">
+				<input type="text" name="address2Pincode" ng-model="User.address2Pincode"/>
+			</div>
+		</div>
+		<div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <div class="checkbox">
+		        <label>
+		          <input type="checkbox" name="termsAndConditons" ng-model="User.termsAndConditons"/>  Please accept terms and conditions to proceed
+		        </label>
+		      </div>
+		    </div>
+		</div>
+		<div class="form-group">
+			<button ng-click="doRegistration(User)" ng-disabled="registrationForm.$invalid || isUnchanged(user)" class="btn btn-default search-button">Register</button>
+			<button ng-click="doRegistrationAndAppointment(User)" ng-disabled="registrationForm.$invalid || isUnchanged(user)" class="btn btn-default search-button">Register And Continue to Appointment</button>
+		</div>
+
+
+		
+		<!-- <table style="align:center" class="css-form">
+			<tr style="height:45px">
+       			<td colspan="4"><h1>Registration Form</h1></td>
+       		</tr>
+       		<tr> 
+				<td colspan="4">
+					<span>
+						<h3>
+							<b>{{registrationResultMessage}} </b>
+						</h3>
+					 </span>
+				 </td>
+		    </tr>
+		    
+       		<tr style="height:45px">
+				<td colspan="4">
+					<p>Note: Please make sure the details are correct before submitting form. Fields marked with * are mandatory.</p>
+				</td>
+			</tr>
+			<tr style="height:35px">
+				<td colspan="1">Register as* :</td>
+				<td>
+					<select name="roleType" ng-model="User.roleType" required style="width: 180px"> 
+						<option value="">--Select--</option>
+						<option value="Doctor">Doctor</option>
+						<option value="Patient">Patient</option>
+						<option value="Staff">Staff</option>
+					</select>
+				</td>
+			</tr>		
+			<tr style="height:35px">
+				<td>User First Name* :</td>
+				<td><input type="text" name="firstName" ng-model="User.firstName" required/> </td>
+				<td>Last Name* :</td>
+				<td> <input type="text" name="lastName" ng-model="User.lastName" required/> </td> 
+			</tr>
+			<tr style="height:35px">
+				<td>Mobile Country Code*: </td>
+				<td><input type="text" name="mobileCode" ng-model="User.mobileCode" required size="4"/> </td>
+				<td>Mobile*: </td>
+				<td><input type="text" name="mobile" ng-model="User.mobile" required/></td>
+			</tr>
+			<tr style="height:35px">
+				<td>Email*	 : </td>
+				<td><input type="email" name="email" ng-model="User.email" required/></td>
+				<td>DOB(yyyy-MM-dd)*:</td>
+				<td><input type="date" placeholder="yyyy-MM-dd" name="dob" ng-model="User.dob" required/></td>
+			</tr>
+			<tr style="height:35px">
+				<td>Password*	 : </td>
+				<td><input type="password" name="password" ng-model="User.password" required/></td>
+				<td>Confirm Password*:</td>
+				<td><input type="password" name="confirmPassword" ng-model="User.confirmPassword" required/></td>
+			</tr>
+			<tr align="left">
+					<td colspan="4"><h3>Home Address</h3></td>
+			</tr>
+			<tr style="height:35px">
+				<td>Street 1* : </td>
+				<td><input  type="text" name="address1Street1" ng-model="User.address1Street1" required/></td>	
+				<td>Street 2* : </td>
+				<td><input  type="text" name="address1Street2" ng-model="User.address1Street2" required/></td>
+			</tr>
+			<tr style="height:35px">	
+				<td>City : </td>
+				<td><input type="text" name="address1City" ng-model="User.address1City" /></td>
+				<td>Country : </td>
+				<td><input type="text" name="address1Country" ng-model="User.address1Country"/></td>
+			</tr>
+			<tr style="height:35px">	
+				<td>Postal Code: </td>
+				<td><input type="text" name="address1Pincode" ng-model="User.address1Pincode"/></td>
+				<td colspan="2"></td>
+			</tr>
+			
+			<tr align="left">
+				<td colspan="4"><h3>Office Address</h3></td>
+			</tr>
+			<tr style="height:35px">
+				<td>Street 1* : </td>
+				<td><input  type="text" name="address2Street1" ng-model="User.address2Street1" required/></td>	
+				<td>Street 2* : </td>
+				<td><input type="text"  name="address2Street2" ng-model="User.address2Street2" required/></td>
+			</tr>
+			<tr style="height:35px">	
+				<td>City : </td>
+				<td><input type="text" name="address2City" ng-model="User.address2City"/></td>
+				<td>Country : </td>
+				<td><input type="text" name="address2Country" ng-model="User.address2Country"/></td>
+			</tr>
+			<tr style="height:35px">	
+				<td>Postal Code: </td>
+				<td><input type="text" name="address2Pincode" ng-model="User.address2Pincode"/></td>
+				<td colspan="2"></td>
+			</tr>
+			<tr style="height:35px">
+				<td colspan="4"><input type="checkbox" name="termsAndConditons" ng-model="User.termsAndConditons"/> Please accept terms and conditions to proceed</td>
+			</tr>
+			<tr style="height:35px">
+				<td>
+					<br>
+					<button ng-click="doRegistration(User)" 
+			  				ng-disabled="registrationForm.$invalid || isUnchanged(user)" 
+			  				style="width: 110px ; height:32px">Register</button>
+			  	</td>
+			  	<td colspan="3">
+					<br>
+					<button ng-click="doRegistrationAndAppointment(User)" 
+			  				ng-disabled="registrationForm.$invalid || isUnchanged(user)" 
+			  				style="width: 270px ; height:32px">Register And Continue to Appointment</button>
+			  	</td>				
+		  	</tr>				 
+		  					
+		
+		</table> -->
+	
+	</form>
+
+</div>

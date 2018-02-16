@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.neev.moh.dao.test" />
+
+	<!--beans:bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<beans:property name="configLocation" value="classpath:hibernate.dao.cfg.xml" />
+		<beans:property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration" />
+	</beans:bean-->
+	<beans:bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<beans:property name="dataSource" ref="dataSource" />
+		<beans:property name="configLocation" value="classpath:hibernate.cfg.xml" />
+		<beans:property name="annotatedClasses">
+            <beans:list>
+                <beans:value>com.neev.moh.model.Address</beans:value>
+                <beans:value>com.neev.moh.model.Appointment</beans:value>
+                <beans:value>com.neev.moh.model.AppSettingVO</beans:value>
+                <beans:value>com.neev.moh.model.Department</beans:value>
+                <beans:value>com.neev.moh.model.Doctor</beans:value>
+                <beans:value>com.neev.moh.model.MedicineInventory</beans:value>
+                <beans:value>com.neev.moh.model.PatientRecord</beans:value>
+                <beans:value>com.neev.moh.model.User</beans:value>
+                <beans:value>com.neev.moh.model.Role</beans:value>
+                <beans:value>com.neev.moh.model.Privilege</beans:value>
+            </beans:list>
+        </beans:property>
+	</beans:bean>
+
+	<!-- Enable Transaction -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="userDao" class="com.neev.moh.dao.impl.UserDaoImpl">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
+	
+	<beans:bean id="patientRecordDao" class="com.neev.moh.dao.impl.PatientRecordDaoImpl">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>	
+	<beans:bean id="departmentDao" class="com.neev.moh.dao.impl.DepartmentDaoImpl">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>	
+	<beans:bean id="doctorDao" class="com.neev.moh.dao.impl.DoctorDaoImpl">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
+
+</beans:beans>

@@ -1,0 +1,30 @@
+﻿
+<div>
+ You have loggedin as ADMIN user.
+ <br>
+ <br>
+ 
+ 	<form name="searchForm" novalidate>
+       	Enter Email Address to search:   
+		<input type="text" name="searchText" ng-model="searchText" required/>
+		<button ng-click="doSearch(searchText)" 
+		  	    ng-disabled="searchForm.$invalid || isUnchanged(searchText)" 
+		  	style="width: 110px ; height:32px">Search</button> <br>
+		  	
+		 <br> <button style="width: 130px ; height:32px" ng-click="openAddEditMed()" >Medicine List</button>	
+		 <br> <button style="width: 130px ; height:32px" ng-click="notificationToPatient()" >Notification to Patient</button>
+    </form>
+ 	
+ 	<br>
+ 	
+ 	<span ng-show="showSearchResult">
+ 		<div><h2>Result are listed below<h2></div>
+ 		<span ng-hide="isUser">
+ 			<p>No Record Found </p>
+ 			<a href="{{searchResultAnchorUrl}}">{{searchResultAnchorLabel}}</a>
+ 		</span>
+ 		<span ng-show="isUser">{{searchedResultUsername}}</span>
+ 	</span>
+ 	
+ </div> 
+      			

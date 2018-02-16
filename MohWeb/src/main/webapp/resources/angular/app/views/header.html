@@ -1,0 +1,60 @@
+    <div class="row">
+      <div class="col-md-12 text-right">
+        <a href="javascript:void(0);">
+         <!-- <img class="push-logo-down" ng-src="img/moh.png" alt="MOH-logo"> -->
+       </a>
+     </div>
+
+  </div>
+  <div class="row header">
+    <div class="col-md-12">
+      <div class="navbar navbar-inverse navbar-default">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav">
+            <li ng-if="loggedUser">
+              <a ng-if="loggedUser.userRole == 'Admin' || loggedUser.userRole == 'Doctor'" href="#/admin">Home</a>
+              <a ng-if="loggedUser.userRole == 'Patient'" href="#/patient">Home</a>
+            </li>
+            <li ng-if="loggedUser"><a href="#/bookAppointment">Appointment</a></li>
+            <li ng-if="isRegistrationAccess"><a href="#/registration">Registration</a></li>
+            <li><a href="javascript:void(0);">Programs & Campaigns</a></li>
+            <li class="dropdown">
+              <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">About us</a>
+              <!-- <ul class="dropdown-menu">
+                <li><a href="javascript:void(0);">Our Organisation</a></li>
+                <li><a href="javascript:void(0);">Annual Report</a></li>
+                <li><a href="javascript:void(0);">Budget</a></li>
+                <li><a href="javascript:void(0);">Health Jobs</a></li>
+                <li><a href="javascript:void(0);">Legislation & Policy</a></li>
+              </ul> -->
+            </li>
+            <li class="dropdown">
+              <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Media Center</a>
+              <!-- <ul class="dropdown-menu">
+                <li><a href="javascript:void(0);">Gallery 2014</a></li>
+                <li><a href="javascript:void(0);">Media release subscriptions</a></li>
+                <li><a href="javascript:void(0);">Health Warnings</a></li>
+              </ul> -->
+            </li>
+            <li><a href="javascript:void(0);">Programs & Campaigns</a></li>
+            <li><a href="javascript:void(0);">Contact us</a></li>
+          </ul>
+          <!-- <form class="navbar-form navbar-right">
+            <div class="input-group col-lg-12 search-block">
+              <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go</button>
+              </span>
+            </div>
+          </form> -->
+        </div>
+      </div>
+    </div>
+  </div>

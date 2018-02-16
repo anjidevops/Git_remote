@@ -1,0 +1,207 @@
+﻿	<h3>Booking Appointment Form</h3>
+
+	<div class="add-edit-medicine">
+
+		<form name="appointmentForm" novalidate class="form-horizontal">
+			<p ng-class="{'success':valid, 'error':!valid}">{{appointmentResultMessage}}</p>
+			<div class="form-group" ng-if="loggedUser.userRole !== 'Doctor'">
+				<label for="inputEmail3" class="col-sm-5 control-label">Department* :</label>
+				<div class="col-sm-6">
+					<select name="department" ng-model="Appointment.departmentId" ng-required="true" ng-change="getDoctors(Appointment)">
+						<option value="">--Select--</option>
+						<option ng-repeat="department in allDepartments" value="{{department.departmentId}}">{{department.departmentName}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group" ng-if="loggedUser.userRole !== 'Doctor'">
+				<label for="inputEmail3" class="col-sm-5 control-label">Doctor* :</label>
+				<div class="col-sm-6">
+					<select name="doctor" ng-model="Appointment.doctorId" ng-required="true" ng-change="getDoctorTime(Appointment)">
+						<option value="">--Select--</option>
+						<option ng-repeat="doctor in allDoctors" value="{{doctor.doctorId}}">{{doctor.name}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputEmail3" class="col-sm-5 control-label">Select Date* :</label>
+				<div class="col-sm-6">
+					<p class="input-group date-picker">
+						<input type="text" class="form-control" datepicker-popup="{{format}}" is-open="opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" show-weeks="showWeeks" ng-model="Appointment.appointmentDay" starting-day="4" readonly ng-change="getDoctorTime(Appointment)"/>
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-default search-button" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+						</span>
+					</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-5 control-label">Lane* :</label>
+				<div class="col-sm-6">
+					<select name="lane" ng-model="Appointment.lane" ng-required="true" ng-change="getDoctorTime(Appointment)">
+						<option value="">--Select--</option>
+						<option value="0">Lane 1</option>
+						<option value="1">Lane 2</option>
+					</select>
+				</div>	
+							
+				<!-- <td>From Minute</td>
+				<td>
+					<select name="fromMin" ng-Model="Appointment.fromMin" style="width: 180px" integer>
+						<option value="">--Select--</option>
+						<option value="0">0</option>
+						<option value="5">5</option>
+						<option value="10">10</option>
+						<option value="15">15</option>
+						<option value="20">20</option>
+						<option value="25">25</option>
+						<option value="30">30</option>
+						<option value="35">35</option>
+						<option value="40">40</option>
+						<option value="45">45</option>
+						<option value="50">50</option>
+						<option value="55">55</option>
+					</select>
+				</td> -->
+			<!-- </tr>
+			<tr>
+				<td>To Hour:</td>	
+				<td>
+					<select name="toHour" ng-Model="Appointment.toHour" style="width: 180px">
+						<option value="">--Select--</option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+						<option value="21">21</option>
+						<option value="22">22</option>
+						<option value="23">23</option>
+					</select>
+				</td>
+				<td>To Minute</td>
+				<td>
+					<select name="toMin" ng-Model="Appointment.toMin" style="width: 180px">
+						<option value="">--Select--</option>
+						<option value="0">0</option>
+						<option value="5">5</option>
+						<option value="10">10</option>
+						<option value="15">15</option>
+						<option value="20">20</option>
+						<option value="25">25</option>
+						<option value="30">30</option>
+						<option value="35">35</option>
+						<option value="40">40</option>
+						<option value="45">45</option>
+						<option value="50">50</option>
+						<option value="55">55</option>
+					</select>
+				</td>
+			</tr> -->
+			
+			<!-- <tr>
+				<td colspan="4" id="timeUI"> </td>	
+			</tr> -->
+
+			<tr>
+				<td colspan="4">
+					<div ng-if="showAppointmentSlot">	
+						<div ng-if="hourAppointments != null">
+							<span ng-repeat="(hourKey,hourSlot) in hourAppointments">
+									<b>{{hourKey}} </b>
+									<span ng-repeat="minSlot in hourSlot">
+										  <span ng-switch="minSlot.status">
+										  	  <span ng-switch-when="NA" class="make-appointment-time-status-na" title="{{minSlot.status}}" ng-click="bookTime(hourKey , minSlot.fromMin+1,Appointment)">{{minSlot.fromMin+1}}</span>
+										  	  <span ng-switch-when="Free" class="make-appointment-time-status-free" title="{{minSlot.status}}" ng-click="bookTime(hourKey , minSlot.fromMin+1,Appointment)">{{minSlot.fromMin+1}}</span>
+										  	  <span ng-switch-when="OP" class="make-appointment-time-status-op" title="{{minSlot.status}}" ng-click="bookTime(hourKey , minSlot.fromMin+1,Appointment)">{{minSlot.fromMin+1}}</span>
+										  	  <span ng-switch-when="Busy" class="make-appointment-time-status-busy" title="{{minSlot.status}}" ng-click="bookTime(hourKey , minSlot.fromMin+1,Appointment)">{{minSlot.fromMin+1}}</span>
+										  	  <span ng-switch-when="Surgery" class="make-appointment-time-status-surgery" title="{{minSlot.status}}" ng-click="bookTime(hourKey , minSlot.fromMin+1,Appointment)">{{minSlot.fromMin+1}}</span>
+										  	  <span ng-switch-when="IP" class="make-appointment-time-status-ip" title="{{minSlot.status}}" ng-click="bookTime(hourKey , minSlot.fromMin+1,Appointment)">{{minSlot.fromMin+1}}</span>
+										  </span>	
+									</span>
+									<br>	
+							</span>	
+				</div>
+						<div ng-if="hourAppointments == null">else-Appointment TimeSlot not available</div>	
+			</div>
+			<div class="form-group" ng-show="showBookingWindow">
+				<label class="col-sm-5 control-label">Select Slot* :</label>
+				<div class="col-sm-6">
+					<div class="row">
+						<div class="col-sm-12 legend">
+							<table class="table table-bordered">
+								<tr>
+									<th colspan="6">Legend</th>
+								</tr>
+
+								<tr>
+									<td><div class="single-slot free"></div></td>
+									<td><div class="single-slot selected"></div></td>
+									<td><div class="single-slot busy"></div></td>
+									<td><div class="single-slot unavailable"></div></td>
+									<td><div class="single-slot surgery"></div></td>
+									<td><div class="single-slot ipd"></div></td>
+									<td><div class="single-slot opd"></div></td>
+								</tr>
+								<tr>
+									<td>Free</td>
+									<td>Booked</td>
+									<td>Busy</td>
+									<td>Unavailable</td>
+									<td>Surgery</td>
+									<td>IPD</td>
+									<td>OPD</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="row" ng-repeat= "hour in bookingWindow">
+						<div class="col-sm-4">
+							<label class="control-label">{{hour.hour}} :</label>
+						</div>
+						<div class="col-sm-8">
+							<div class="row">
+								<div class="col-sm-12" ng-if="Appointment.lane == 0">
+									<a href="javascript:void(0);"  ng-repeat="slot in hour.lane1" title="{{slot.hourStart}}:{{slot.minuteStart}} - {{slot.hourStart}}:{{slot.minuteEnd}}" ng-click="selectStatus(slot, $index, $parent.$index)">
+										<div class="single-slot" ng-class="{'free':slot.status == 'Free', 'busy':slot.status == 'Busy', 'unavailable':slot.status == 'NA','surgery':slot.status == 'Surgery','ipd':slot.status == 'IP','opd':slot.status == 'OP','selected':slot.status == 'selected'}"></div>
+									</a>
+								</div>
+								<div class="col-sm-12" ng-if="Appointment.lane == 1">
+									<a href="javascript:void(0);"  ng-repeat="slot in hour.lane2" title="{{slot.hourStart}}:{{slot.minuteStart}} - {{slot.hourStart}}:{{slot.minuteEnd}}" ng-click="selectStatus(slot , $index,$parent.$index)">
+										<div class="single-slot" ng-class="{'free':slot.status == 'Free', 'busy':slot.status == 'Busy', 'unavailable':slot.status == 'NA','surgery':slot.status == 'Surgery','ipd':slot.status == 'IP','opd':slot.status == 'OP','selected':slot.status == 'selected'}"></div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group" ng-if="loggedUser.userRole === 'Doctor' && showStatusSelect">
+						<label class="col-sm-5 control-label">Select Status* :</label>
+						<div class="col-sm-6">
+							<select name="doctor" ng-model="Appointment.slotStatus" ng-change="changeStatus(Appointment.slotStatus)">
+								<option value="">--Select--</option>
+								<option ng-repeat="status in allStatus" value="{{status.name}}">{{status.name}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<button ng-click="bookAppointment(Appointment)" ng-disabled="appointmentForm.$invalid || isUnchanged(Appointment)" class="btn btn-default search-button">Book Appointment</button>
+			</div>
+		</form>
+	</div>
+
+
+

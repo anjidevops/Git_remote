@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.neev.moh.dao.test" />
+	<util:properties id="appConfigProperties" location="classpath:appconfig.properties"/>
+
+	<beans:bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<beans:property name="dataSource" ref="dataSource" />
+		<beans:property name="hibernateProperties">
+			<beans:props>
+				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</beans:prop>
+				<beans:prop key="hibernate.show_sql">true</beans:prop>
+				<beans:prop key="hbm2ddl.auto">update</beans:prop>
+			</beans:props>
+		</beans:property>
+		<beans:property name="annotatedClasses">
+            <beans:list>
+                <beans:value>com.neev.moh.model.Address</beans:value>
+                <beans:value>com.neev.moh.model.Appointment</beans:value>
+                <beans:value>com.neev.moh.model.AppSettingVO</beans:value>
+                <beans:value>com.neev.moh.model.Department</beans:value>
+                <beans:value>com.neev.moh.model.Doctor</beans:value>
+                <beans:value>com.neev.moh.model.MedicineInventory</beans:value>
+                <beans:value>com.neev.moh.model.PatientRecord</beans:value>
+                <beans:value>com.neev.moh.model.User</beans:value>
+                <beans:value>com.neev.moh.model.Role</beans:value>
+                <beans:value>com.neev.moh.model.Privilege</beans:value>
+            </beans:list>
+        </beans:property>
+	</beans:bean>
+	
+	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName" value="#{appConfigProperties['database.driver.class']}" />
+		<beans:property name="url" value="#{appConfigProperties['database.jdbc.url']}" />
+		<beans:property name="username" value="#{appConfigProperties['database.user.name']}" />
+		<beans:property name="password" value="#{appConfigProperties['database.user.password']}" />
+	</beans:bean>
+
+	<!-- Enable Transaction -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="userDao" class="com.neev.moh.dao.impl.UserDaoImpl">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
+	<beans:bean id="patientRecordDao" class="com.neev.moh.dao.impl.PatientRecordDaoImpl">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
+	<beans:bean id="departmentDao" class="com.neev.moh.dao.impl.DepartmentDaoImpl">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
+	<beans:bean id="doctorDao" class="com.neev.moh.dao.impl.DoctorDaoImpl">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
+	<beans:bean id="inventoryDao" class="com.neev.moh.dao.impl.InventoryDaoImpl">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
+	<beans:bean id="appointmentsDao" class="com.neev.moh.dao.impl.AppointmentsDaoImpl">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
+	<beans:bean id="appSettingDao" class="com.neev.moh.dao.impl.AppSettingsDaoImpl">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+	</beans:bean>
+</beans:beans>

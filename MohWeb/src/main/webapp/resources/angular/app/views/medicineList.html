@@ -1,0 +1,44 @@
+﻿
+
+		<h2>Medicine List</h2>
+			<form name="medForm" novalidate>
+				<div class="row">
+					<div class="col-md-6 text-left">
+						<button ng-click="addMedicineInventory()" ng-disabled="isUnchanged()" class="btn btn-default search-button">Add</button>  
+						<button ng-click="sendInventoryReport()" class="btn btn-default search-button">Send Report</button><br>
+		            </div>
+		            <div class="col-md-6 text-right">
+		            	<div class="input-group">
+							<input type="text" required="" ng-model="searchText" name="searchText" class="form-control">
+			              	<span class="input-group-btn">
+			                	<button ng-click="doSearch(searchText)" ng-disabled="medForm.$invalid || isUnchanged(searchText)" class="btn btn-default search-button" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+			              	</span>
+						</div>
+		            </div>
+				</div>
+
+					<span style="color:blue;">{{medSuccessMessage}}</span>
+					<span style="color:red;">{{medErrorMessage}}</span>
+			</form>
+			<table class="table table-bordered push-logo-down">
+				<thead>
+					<th>Medicine Name</th>
+					<th>Thresold Quantity</th>
+					<th>Available Quantity</th>
+					<th>Edit</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="m in medList">
+						<td>{{m.medicineName}}</td>
+						<td>{{m.thresoldQuantity}}</td>
+						<td>{{m.availableQuantity}}</td>
+						<td align= "center"><a href="" ng-click="editMedicineInventory(m)" title="Edit Medicine Inventory" ><img src="./img/editxl.png" width="20px"  /></a></td>
+					</tr>
+				</tbody>
+			</table>
+
+
+
+
+
+
